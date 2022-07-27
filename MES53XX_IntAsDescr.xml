@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.0</version>
+    <date>2022-07-27T09:09:06Z</date>
+    <groups>
+        <group>
+            <uuid>36bff6c29af64692839d077febfc7079</uuid>
+            <name>Templates/Network devices</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <uuid>bcaed96b7acf4e92883234d86cdecc5f</uuid>
+            <template>Eltex MES53XX_IntAsDescr</template>
+            <name>Eltex MES53XX_IntAsDescr</name>
+            <groups>
+                <group>
+                    <name>Templates/Network devices</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>47a5b7abd24c4cf58cab2d5ff55d9b9f</uuid>
+                    <name>Модель</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.1.1.0</snmp_oid>
+                    <key>1.3.6.1.2.1.1.1.0</key>
+                    <delay>1d</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>TYPE</inventory_link>
+                </item>
+                <item>
+                    <uuid>051d9e13b1144dc6918c8c7a77b315d2</uuid>
+                    <name>Timetikcs</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.1.3.0</snmp_oid>
+                    <key>1.3.6.1.2.1.1.3.0</key>
+                    <delay>20m</delay>
+                    <history>1d</history>
+                    <trends>1d</trends>
+                    <units>uptime</units>
+                    <inventory_link>MACADDRESS_A</inventory_link>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>c0029e0f9f1f44348508d383ff08bc56</uuid>
+                    <name>Hostname</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.1.5.0</snmp_oid>
+                    <key>1.3.6.1.2.1.1.5.0</key>
+                    <delay>1d</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>NAME</inventory_link>
+                </item>
+                <item>
+                    <uuid>a46d8934a0bb4eb5b05d6308f571f2c3</uuid>
+                    <name>Vendor</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.47.1.1.1.1.12.67108992</snmp_oid>
+                    <key>1.3.6.1.2.1.47.1.1.1.1.12.67108992</key>
+                    <delay>1d</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>TAG</inventory_link>
+                    <preprocessing>
+                        <step>
+                            <type>REGEX</type>
+                            <parameters>
+                                <parameter>.*(Eltex).*</parameter>
+                                <parameter>Eltex</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                </item>
+                <item>
+                    <uuid>ed58cc9302e04ddeb801a1932d5e1c18</uuid>
+                    <name>Загрузка CPU, 1 sec</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.1.7.0</snmp_oid>
+                    <key>1.3.6.1.4.1.89.1.7.0</key>
+                    <history>10d</history>
+                    <trends>90d</trends>
+                    <units>%</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>b11e242e095f42c0aad7ce601c211009</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.1.7.0)&gt;80</expression>
+                            <name>{HOST.CONN} Высокая загрузка процессора</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>4c4854574f1643518c4cd4c3706dcb57</uuid>
+                    <name>Загрузка CPU, 1 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.1.8.0</snmp_oid>
+                    <key>1.3.6.1.4.1.89.1.8.0</key>
+                    <history>10d</history>
+                    <trends>90d</trends>
+                    <units>%</units>
+                </item>
+                <item>
+                    <uuid>9194f499e3c34a3290d5b3c9728449f5</uuid>
+                    <name>Загрузка CPU, 5 min</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.1.9.0</snmp_oid>
+                    <key>1.3.6.1.4.1.89.1.9.0</key>
+                    <history>10d</history>
+                    <trends>90d</trends>
+                    <units>%</units>
+                </item>
+                <item>
+                    <uuid>a5784ce1544e45dbae4ce0df1ac48be1</uuid>
+                    <name>Version_IOS</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.2.4.0</snmp_oid>
+                    <key>1.3.6.1.4.1.89.2.4.0</key>
+                    <delay>1d</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>OS</inventory_link>
+                </item>
+                <item>
+                    <uuid>d23da627719c41f39866ecf32666ee4a</uuid>
+                    <name>Serial number</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.14.1.5.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.14.1.5.1</key>
+                    <delay>1d</delay>
+                    <history>1d</history>
+                    <trends>0</trends>
+                    <value_type>TEXT</value_type>
+                    <inventory_link>SERIALNO_A</inventory_link>
+                </item>
+                <item>
+                    <uuid>19ad5d75d4354960af426bae8d304eac</uuid>
+                    <name>Основной блок питания</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.2.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.2.1</key>
+                    <triggers>
+                        <trigger>
+                            <uuid>26658e8c46af4485a269da6330041239</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.2.1)=4</expression>
+                            <name>{HOST.CONN} Основной блок питания не включен</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>76698e98e0d3490b9063f3d69f776b32</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.2.1)=6</expression>
+                            <name>{HOST.CONN} Основной блок питания не работает</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>a0e2c2c44e8c4f0588c2df853e5b6558</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.2.1)=2</expression>
+                            <name>{HOST.CONN} Основной блок питания работает с ошибками</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>ae431b58b7f64590a81e1bf9de6f40ab</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.2.1)=3</expression>
+                            <name>{HOST.CONN} Основной блок питания работает с ошибками</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>cef25676db43425f88bfd343b0e155d7</uuid>
+                    <name>Резервный блок питания</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.3.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.3.1</key>
+                    <triggers>
+                        <trigger>
+                            <uuid>c176a390d41448298baa4b6aaf76fc71</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.3.1)=4</expression>
+                            <name>{HOST.CONN} Резервный блок питания не включен</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>12c2b4913f854ee4a114d506cd9a5815</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.3.1)=6</expression>
+                            <name>{HOST.CONN} Резервный блок питания не работает</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>91010de0851e468baf321a21235aa224</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.3.1)=2</expression>
+                            <name>{HOST.CONN} Резервный блок питания работает с ошибками</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>a0b25c781f5d43aea0fb9c1b7e6210d4</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.3.1)=3</expression>
+                            <name>{HOST.CONN} Резервный блок питания работает с ошибками</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>ecbbb0bd86b34db7a910e245be845314</uuid>
+                    <name>Вентилятор 1</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.4.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.4.1</key>
+                    <triggers>
+                        <trigger>
+                            <uuid>c574ff65e0534144bc78003ea8663c12</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.4.1)=6</expression>
+                            <name>{HOST.CONN} Вентилятор 1 не работает</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>1b99cfb930ca4bba98714668300b18fd</uuid>
+                    <name>Вентилятор 2</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.5.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.5.1</key>
+                    <triggers>
+                        <trigger>
+                            <uuid>922fe48080cb4730bced677a37e8871f</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.5.1)=6</expression>
+                            <name>{HOST.CONN} Вентилятор 2 не работает</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>ed0b30fffaef432abb07c7e11cf7f2ac</uuid>
+                    <name>Вентилятор 3</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.6.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.6.1</key>
+                    <triggers>
+                        <trigger>
+                            <uuid>80a464735391479c87f2480ab0f01144</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.6.1)=6</expression>
+                            <name>{HOST.CONN} Вентилятор 3 не работает</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>53e3900e29c840f5badba0443423612f</uuid>
+                    <name>Вентилятор 4</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.7.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.7.1</key>
+                    <triggers>
+                        <trigger>
+                            <uuid>fffe7beed2bc42ed8681defd0fdd99ca</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.7.1)=6</expression>
+                            <name>{HOST.CONN} Вентилятор 4 не работает</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>7088d7ad56d74028b6c59625c913eeaf</uuid>
+                    <name>Температура шасси</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.4.1.89.53.15.1.10.1</snmp_oid>
+                    <key>1.3.6.1.4.1.89.53.15.1.10.1</key>
+                    <history>10d</history>
+                    <trends>90d</trends>
+                    <units>C</units>
+                    <triggers>
+                        <trigger>
+                            <uuid>e19f4c2c60e444d9aa533de921631f2b</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.53.15.1.10.1,#5)&gt;70</expression>
+                            <name>{HOST.CONN} Высокая температура</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+                <item>
+                    <uuid>8e8ae4333e8b49e1bf6f3a7c126b2833</uuid>
+                    <name>Доступность узла</name>
+                    <type>SIMPLE</type>
+                    <key>icmpping[,3,,,]</key>
+                    <trends>90d</trends>
+                    <triggers>
+                        <trigger>
+                            <uuid>89538602626e40568857c3c520fd9b9b</uuid>
+                            <expression>last(/Eltex MES53XX_IntAsDescr/icmpping[,3,,,])=0</expression>
+                            <name>{HOST.CONN} Узел недоступен</name>
+                            <priority>DISASTER</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>f17b282faec54e1eb1b59de1a3ed6f13</uuid>
+                    <name>Interface IF-MIB</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#IFDESCR},IF-MIB::ifDescr,{#IFALIAS},IF-MIB::ifAlias,{#IFADMINSTATUS},IF-MIB::ifAdminStatus]</snmp_oid>
+                    <key>ifmib</key>
+                    <delay>30m</delay>
+                    <filter>
+                        <conditions>
+                            <condition>
+                                <macro>{#IFADMINSTATUS}</macro>
+                                <value>@ifAdminstatus</value>
+                                <formulaid>A</formulaid>
+                            </condition>
+                            <condition>
+                                <macro>{#IFDESCR}</macro>
+                                <value>@ifDescr</value>
+                                <formulaid>B</formulaid>
+                            </condition>
+                        </conditions>
+                    </filter>
+                    <lifetime>0</lifetime>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>9f50060acf65465e8ac5d3dad02151cc</uuid>
+                            <name>Ошибки на интерфейсе {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.14.{#SNMPINDEX}</snmp_oid>
+                            <key>Errors[{#IFDESCR}]</key>
+                            <trends>90d</trends>
+                            <units>p/1m</units>
+                            <preprocessing>
+                                <step>
+                                    <type>SIMPLE_CHANGE</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>3bae803335724566b58931f482f4c877</uuid>
+                                    <expression>(max(/Eltex MES53XX_IntAsDescr/Errors[{#IFDESCR}],60s)-min(/Eltex MES53XX_IntAsDescr/Errors[{#IFDESCR}],60s))&gt;100</expression>
+                                    <name>{HOST.CONN} Более 100 пакетов с ошибками - {#IFDESCR}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>d24cfc20842848d597ac184304a5a469</uuid>
+                            <name>Входящий трафик {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>ifInBPS[{#IFDESCR}]</key>
+                            <trends>90d</trends>
+                            <units>bps</units>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>8</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>b7b626474b08400ebc43a60e8a26bd9d</uuid>
+                            <name>Статус {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>ifOperStatus[{#IFDESCR}]</key>
+                            <delay>5m</delay>
+                            <trends>90d</trends>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>97227b9f06a441bb937b56dff1f3e03e</uuid>
+                                    <expression>last(/Eltex MES53XX_IntAsDescr/ifOperStatus[{#IFDESCR}])&lt;&gt;1</expression>
+                                    <name>{HOST.CONN} Порт не поднят - {#IFDESCR}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>7d6cf3eca87348d49fbb6c49e993e4b3</uuid>
+                            <name>Исходящий трафик {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.16.{#SNMPINDEX}</snmp_oid>
+                            <key>ifOutBPS[{#IFDESCR}]</key>
+                            <trends>90d</trends>
+                            <units>bps</units>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                    <parameters>
+                                        <parameter/>
+                                    </parameters>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>8</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>147c5e49f9d741c880ce072ed9509203</uuid>
+                            <name>Скорость {#IFDESCR}</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ifSpeed[{#IFDESCR}]</key>
+                            <delay>2h</delay>
+                            <trends>90d</trends>
+                            <units>bps</units>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>1000000</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                    </item_prototypes>
+                    <trigger_prototypes>
+                        <trigger_prototype>
+                            <uuid>9ecc992dfb0f4b2192dd1a536a26cf1c</uuid>
+                            <expression>avg(/Eltex MES53XX_IntAsDescr/ifInBPS[{#IFDESCR}],60s)/last(/Eltex MES53XX_IntAsDescr/ifSpeed[{#IFDESCR}])&gt;0.9</expression>
+                            <name>{HOST.CONN} Загрузка канала &gt; 90% (IN) - {#IFALIAS}</name>
+                            <priority>AVERAGE</priority>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <uuid>4d24846611f74565b49ab1dc2132a5f0</uuid>
+                            <expression>avg(/Eltex MES53XX_IntAsDescr/ifOutBPS[{#IFDESCR}],60s)/last(/Eltex MES53XX_IntAsDescr/ifSpeed[{#IFDESCR}])&gt;0.9</expression>
+                            <name>{HOST.CONN} Загрузка канала &gt;90% (OUT) - {#IFALIAS}</name>
+                            <priority>AVERAGE</priority>
+                        </trigger_prototype>
+                    </trigger_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>3a48d062592b4c438e820094baea5561</uuid>
+                            <name>{#IFDESCR} - {#IFALIAS}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <drawtype>BOLD_LINE</drawtype>
+                                    <color>0040FF</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Eltex MES53XX_IntAsDescr</host>
+                                        <key>ifInBPS[{#IFDESCR}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>2</sortorder>
+                                    <drawtype>GRADIENT_LINE</drawtype>
+                                    <color>00FF00</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Eltex MES53XX_IntAsDescr</host>
+                                        <key>ifOutBPS[{#IFDESCR}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>3</sortorder>
+                                    <drawtype>FILLED_REGION</drawtype>
+                                    <color>000000</color>
+                                    <calc_fnc>ALL</calc_fnc>
+                                    <item>
+                                        <host>Eltex MES53XX_IntAsDescr</host>
+                                        <key>Errors[{#IFDESCR}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <uuid>54b0285101fb472c99ef6ab3248eab53</uuid>
+            <expression>nodata(/Eltex MES53XX_IntAsDescr/1.3.6.1.4.1.89.1.7.0,600s)&lt;&gt;0 and last(/Eltex MES53XX_IntAsDescr/icmpping[,3,,,])=1</expression>
+            <name>{HOST.CONN} НЕТ ДАННЫХ</name>
+        </trigger>
+    </triggers>
+    <graphs>
+        <graph>
+            <uuid>3c6abb2f75f24d3586655567519eef84</uuid>
+            <name>Доступность узла</name>
+            <yaxismax>2</yaxismax>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>FF0000</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Eltex MES53XX_IntAsDescr</host>
+                        <key>icmpping[,3,,,]</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>ee44a6e27f3a47f6805335fe62c2812d</uuid>
+            <name>Загрузка CPU</name>
+            <ymin_type_1>FIXED</ymin_type_1>
+            <ymax_type_1>FIXED</ymax_type_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>FILLED_REGION</drawtype>
+                    <color>4000FF</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Eltex MES53XX_IntAsDescr</host>
+                        <key>1.3.6.1.4.1.89.1.8.0</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>00FF00</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Eltex MES53XX_IntAsDescr</host>
+                        <key>1.3.6.1.4.1.89.1.9.0</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>3</sortorder>
+                    <drawtype>BOLD_LINE</drawtype>
+                    <color>FF0000</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Eltex MES53XX_IntAsDescr</host>
+                        <key>1.3.6.1.4.1.89.1.7.0</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <uuid>373446fe501641adb8ec6ad236cb797f</uuid>
+            <name>Температура</name>
+            <graph_items>
+                <graph_item>
+                    <sortorder>2</sortorder>
+                    <drawtype>GRADIENT_LINE</drawtype>
+                    <color>0040FF</color>
+                    <calc_fnc>ALL</calc_fnc>
+                    <item>
+                        <host>Eltex MES53XX_IntAsDescr</host>
+                        <key>1.3.6.1.4.1.89.53.15.1.10.1</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+    </graphs>
+</zabbix_export>
